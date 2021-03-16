@@ -40,6 +40,15 @@ export class CharacterCard extends Component {
               onChange={this.changeState}
             ></input>
           </div>
+          <div>
+            <button
+              className="input-div"
+              // events params
+              onClick={this.setPredefState.bind(this, "Init state")}
+            >
+              Change to Init State
+            </button>
+          </div>
           <button className="kill-button" onClick={this.kill}>
             KILL
           </button>
@@ -68,10 +77,14 @@ export class CharacterCard extends Component {
     // const newState = event.target.value;
     // display change state
     // this.setState({state: newState});
-    
+
     // Option B
-    this.setState({state: event.target.value});
-  }
+    this.setState({ state: event.target.value });
+  };
+
+  setPredefState = (param, event) => {
+    this.setState({ state: param });
+  };
 }
 
 export class App extends Component {
