@@ -11,8 +11,8 @@ export class CharacterCard extends Component {
     return (
       <div>
         <div>
-          <App title="R y M"></App>
-          <App title="y Beth"></App>
+          {/* communication father-son */}
+          <App title={this.props.title}></App>
         </div>
         <div className="card">
           {/* define props in component declaration */}
