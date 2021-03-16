@@ -7,9 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* [<App></App>, */}
-    <CharacterCard title="Rick y Morty y Beth" />,
-    {/* ], */}
+    <CharacterCard title="Rick y Morty y Beth" name="Morty" state="Dead" gender="Male" chapters="All" />,
   </React.StrictMode>,
   document.getElementById("root")
 );
