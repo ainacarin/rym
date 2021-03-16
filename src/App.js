@@ -32,7 +32,17 @@ export class CharacterCard extends Component {
           <p>{this.props.gender}</p>
           {/* can change, so, use state value */}
           <p>{this.state.chapters}</p>
-          <button className="kill-button" onClick={this.kill}>KILL</button>
+          <div>
+            <label forName="state-input">Change character state:</label>
+            <input
+              name="state-input"
+              className="state-input"
+              onChange={this.changeState}
+            ></input>
+          </div>
+          <button className="kill-button" onClick={this.kill}>
+            KILL
+          </button>
         </div>
       </div>
     );
@@ -49,6 +59,18 @@ export class CharacterCard extends Component {
   // Kill character
   kill = (event) => {
     this.setState({ state: "Dead" });
+  };
+
+  changeState = (event) => {
+    // get user state
+
+    // option A
+    // const newState = event.target.value;
+    // display change state
+    // this.setState({state: newState});
+    
+    // Option B
+    this.setState({state: event.target.value});
   }
 }
 
