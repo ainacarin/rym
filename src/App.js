@@ -14,7 +14,7 @@ export class CharacterCard extends Component {
       // gender and name are inmmutables
     };
     // attach context kill function into var
-    this.kill = this.kill.bind(this);
+    // this.kill = this.kill.bind(this); // it is not necessary with arrow functions
   }
   render() {
     // card definition
@@ -47,7 +47,7 @@ export class CharacterCard extends Component {
    * EVENTS
    */
   // Kill character
-  kill() {
+  kill = (event) => {
     this.setState({ state: "Dead" });
   }
 }
