@@ -6,6 +6,11 @@ h1 {
 .card {
   border: 2px solid black;
   width: 250px;
-  height: 350px;
+  max-height: 350px;
   text-align: center;
+  min-height: 250px;
+}
+
+.kill-button{
+  background-color: red;
 }

@@ -10,9 +10,11 @@ export class CharacterCard extends Component {
       // before state
       state: this.props.state,
       // chapters where the character is
-      chapters: this.props.chapters
+      chapters: this.props.chapters,
       // gender and name are inmmutables
-    }
+    };
+    // attach context kill function into var
+    this.kill = this.kill.bind(this);
   }
   render() {
     // card definition
@@ -30,6 +32,7 @@ export class CharacterCard extends Component {
           <p>{this.props.gender}</p>
           {/* can change, so, use state value */}
           <p>{this.state.chapters}</p>
+          <button className="kill-button" onClick={this.kill}>KILL</button>
         </div>
       </div>
     );
@@ -37,7 +40,15 @@ export class CharacterCard extends Component {
 
   componentDidMount() {
     // change character state after mount
-    this.setState({state: "Alive"});
+    this.setState({ state: "Alive" });
+  }
+
+  /**
+   * EVENTS
+   */
+  // Kill character
+  kill() {
+    this.setState({ state: "Dead" });
   }
 }
 
