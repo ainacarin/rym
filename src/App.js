@@ -8,27 +8,31 @@ export class CharacterCard extends Component {
   }
   render() {
     // card definition
-    console.log("render");
-    return ( 
-    <div className="card">
-      <h2 className="char-name">Character name</h2>
-      <p>State</p>
-      <p>Gender</p>
-      <p>Chapter</p>
-    </div>
+    return (
+      <div>
+        <div>
+          <App title="R y M"></App>
+          <App title="y Beth"></App>
+        </div>
+        <div className="card">
+          {/* define props in component declaration */}
+          <h2 className="char-name">Character name</h2>
+          <p>State</p>
+          <p>Gender</p>
+          <p>Chapter</p>
+        </div>
+      </div>
     );
   }
-
 }
-
 
 export class App extends Component {
   render() {
     return (
       <div className="rym">
-        <h1>Rick y Morty</h1>
+        {/* display title prop */}
+        <h1>{this.props.title}</h1>
       </div>
     );
   }
-
 }
