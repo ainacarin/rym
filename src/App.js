@@ -10,16 +10,37 @@ export class Character extends Component {
     this.state = {
       characters: characters.results,
     };
+    // attach instance - Option B
+    this.extractChaptersNumber = this.extractChaptersNumber.bind(this);
+  }
+
+  // Option B
+  extractChaptersNumber(chapterList) {
+    const chapterNumbersList = chapterList.map((chapter) => {
+      return <li>{chapter.split("/").slice(-1)}</li>;
+    });
+    return chapterNumbersList;
   }
 
   render() {
-    return( 
-    <div>
-      { this.state.characters.map( (char, i) => {
-    return <CharacterCard title="Char" name={char.name} state={char.state} gender={char.gender} chapters={char.episode} />
-      })}
-    </div>
-    )
+    return (
+      <div>
+        {this.state.characters.map((char, i) => {
+          // Option A
+          // return <CharacterCard title="Char" name={char.name} state={char.state} gender={char.gender} chapters={this.extractChaptersNumber(char.episode)} />
+          // Option B
+          return (
+            <CharacterCard
+              title="Char"
+              name={char.name}
+              state={char.state}
+              gender={char.gender}
+              chapters={this.extractChaptersNumber(char.episode)}
+            />
+          );
+        })}
+      </div>
+    );
   }
 }
 
@@ -31,7 +52,7 @@ export class CharacterCard extends Component {
     this.state = {
       // before state
       state: this.props.state,
-      // chapters where the character is
+      // chapters where the character is - Option A
       chapters: this.props.chapters,
       // gender and name are inmmutables
       // var for communication with father
@@ -63,9 +84,12 @@ export class CharacterCard extends Component {
           <p>{this.props.gender}</p>
           {this.state.son ? "true" : "false"}
           {/* can change, so, use state value */}
-          <ul>{this.state.chapters.map( (episode, i) => {
+          {/* Option A */}
+          {/* <ul>{this.state.chapters.map( (episode, i) => {
             return <li>{episode}</li>
-          })}</ul>
+          })}</ul> */}
+          {/* Option B */}
+          <ul>{this.props.chapters}</ul>
           <div>
             <label forname="state-input">Change character state:</label>
             <input
