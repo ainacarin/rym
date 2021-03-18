@@ -12,17 +12,25 @@ export class CharacterCard extends Component {
       // chapters where the character is
       chapters: this.props.chapters,
       // gender and name are inmmutables
+      // var for communication with father
+      son: true
     };
     // attach context kill function into var
     // this.kill = this.kill.bind(this); // it is not necessary with arrow functions
   }
+
+  // state to change father prop
+  setApp = (param) => {
+    this.setState({ son: param });
+  }
+
   render() {
     // card definition
     return (
       <div>
         <div>
           {/* communication father-son */}
-          <App title={this.props.title}></App>
+          <App setApp={this.setApp} title={this.props.title}></App>
         </div>
         <div className="card">
           {/* define props in component declaration */}
@@ -30,10 +38,11 @@ export class CharacterCard extends Component {
           {/* can change, so, use state value */}
           <p>{this.state.state}</p>
           <p>{this.props.gender}</p>
+          {this.state.son ? "true" : "false"}
           {/* can change, so, use state value */}
           <p>{this.state.chapters}</p>
           <div>
-            <label forName="state-input">Change character state:</label>
+            <label forname="state-input">Change character state:</label>
             <input
               name="state-input"
               className="state-input"
@@ -88,6 +97,12 @@ export class CharacterCard extends Component {
 }
 
 export class App extends Component {
+
+  // communicating with father
+  componentDidMount(){
+    this.props.setApp(false);
+  }
+
   render() {
     return (
       <div className="rym">
