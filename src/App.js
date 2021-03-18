@@ -1,5 +1,27 @@
 import React, { Component } from "react";
 import "./App.css";
+// characters
+import { default as characters } from "./data/characters.json";
+
+//
+export class Character extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      characters: characters.results,
+    };
+  }
+
+  render() {
+    return( 
+    <div>
+      { this.state.characters.map( (char, i) => {
+    return <CharacterCard title="Char" name={char.name} state={char.state} gender={char.gender} chapters={char.episode} />
+      })}
+    </div>
+    )
+  }
+}
 
 // Card Characters Component
 export class CharacterCard extends Component {
@@ -13,7 +35,8 @@ export class CharacterCard extends Component {
       chapters: this.props.chapters,
       // gender and name are inmmutables
       // var for communication with father
-      son: true
+      son: true,
+      characters: characters.results,
     };
     // attach context kill function into var
     // this.kill = this.kill.bind(this); // it is not necessary with arrow functions
@@ -22,7 +45,7 @@ export class CharacterCard extends Component {
   // state to change father prop
   setApp = (param) => {
     this.setState({ son: param });
-  }
+  };
 
   render() {
     // card definition
@@ -40,7 +63,9 @@ export class CharacterCard extends Component {
           <p>{this.props.gender}</p>
           {this.state.son ? "true" : "false"}
           {/* can change, so, use state value */}
-          <p>{this.state.chapters}</p>
+          <ul>{this.state.chapters.map( (episode, i) => {
+            return <li>{episode}</li>
+          })}</ul>
           <div>
             <label forname="state-input">Change character state:</label>
             <input
@@ -97,9 +122,8 @@ export class CharacterCard extends Component {
 }
 
 export class App extends Component {
-
   // communicating with father
-  componentDidMount(){
+  componentDidMount() {
     this.props.setApp(false);
   }
 

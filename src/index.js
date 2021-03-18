@@ -3,11 +3,12 @@ import ReactDOM from "react-dom";
 import "./index.css";
 // import App from './App';
 import { App, CharacterCard } from "./App";
+import { Character } from './App';
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <CharacterCard title="Rick y Morty y Beth" name="Morty" state="Dead" gender="Male" chapters="All" />,
+   <Character></Character>
   </React.StrictMode>,
   document.getElementById("root")
 );
