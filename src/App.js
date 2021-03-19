@@ -11,13 +11,14 @@ export class Character extends Component {
       characters: characters.results,
     };
     // attach instance - Option B
-    this.extractChaptersNumber = this.extractChaptersNumber.bind(this);
+    // this.extractChaptersNumber = this.extractChaptersNumber.bind(this);
   }
 
   // Option B
   extractChaptersNumber(chapterList) {
-    const chapterNumbersList = chapterList.map((chapter) => {
-      return <li>{chapter.split("/").slice(-1)}</li>;
+    const chapterNumbersList = chapterList.map((chapter, i) => {
+      const num = chapter.split("/").slice(-1).join(",");
+      return <li key={num}>{`${num},`}</li>;
     });
     return chapterNumbersList;
   }
@@ -31,6 +32,7 @@ export class Character extends Component {
           // Option B
           return (
             <CharacterCard
+              key={i}
               title="Char"
               name={char.name}
               state={char.state}

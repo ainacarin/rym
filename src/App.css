@@ -5,12 +5,25 @@ h1 {
 
 .card {
   border: 2px solid black;
-  min-width: 25%;
-  max-width: 50%;
+  min-width: 10%;
+  max-width: 20%;
 
   text-align: center;
   min-height: 250px;
+  justify-content: space-between;
 }
+
+.card ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 1rem;
+}
+
+.card ul li {
+  display: inline;
+  }
 
 .kill-button{
   background-color: red;
